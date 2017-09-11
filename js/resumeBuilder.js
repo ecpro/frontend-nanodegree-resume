@@ -83,9 +83,31 @@ var education = {
         }],
     display: function display() {
 
+        $('#education').append(HTMLschoolStart);
+
+        for (var index in education.schools) {
+            $('.education-entry').append(HTMLschoolName.replace(placeholderData, education.schools[index].name));
+            $('.education-entry').append(HTMLschoolDates.replace(placeholderData, education.schools[index].dates));
+            $('.education-entry').append(HTMLschoolDegree.replace(placeholderData, education.schools[index].degree));
+            $('.education-entry').append(HTMLschoolMajor.replace(placeholderData, education.schools[index].majors.join(' ')));
+            $('.education-entry').append(HTMLschoolLocation.replace(placeholderData, education.schools[index].location));
+
+        }
+
+         $('#education').append(HTMLonlineClasses);
+         $('#education').append(HTMLschoolStart);
+        for(var index in education.onlineCourses) {
+            $('.education-entry').append(HTMLonlineTitle.replace(placeholderData, education.onlineCourses[index].title));
+            $('.education-entry').append(HTMLonlineSchool.replace(placeholderData, education.onlineCourses[index].school));
+            $('.education-entry').append(HTMLonlineDates.replace(placeholderData, education.onlineCourses[index].dates));
+            $('.education-entry').append(HTMLonlineURL.replace(placeholderData, education.onlineCourses[index].url));
+        }
+
     }
 
 };
+
+education.display();
 
 var work = {
     jobs: [{
