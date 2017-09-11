@@ -8,14 +8,14 @@ var bio = {
         email: 'mails4ipiyush@gmail.com',
         github: 'https://github.com/ecpro',
         location: 'Pune IN',
-        blog : 'http://www.medium.com/ecpro'
+        blog: 'http://www.medium.com/ecpro'
     },
     welcomeMessage: 'When something is important enough, you do it even if the odds are not in favour',
     skills: ['Java', , 'Javascript', 'C', 'NodeJs', 'Web Services', 'MongoDB', 'Spring'],
     bioPic: 'images/myPic.PNG',
 
     display: function display() {
-        
+
         var fHTMLheaderName = HTMLheaderName.replace(placeholderData, this.name);
         var fHTMLheaderRole = HTMLheaderRole.replace(placeholderData, this.role);
         $('#header').prepend(fHTMLheaderRole);
@@ -30,26 +30,28 @@ var bio = {
         fContacts.push(HTMLblog.replace(placeholderData, this.contacts.blog));
         fContacts.push(HTMLlocation.replace(placeholderData, this.contacts.location));
 
-        for(var index in fContacts) {
+        for (var index in fContacts) {
             $("#topContacts").append(fContacts[index]);
             $("#footerContacts").append(fContacts[index]);
         }
 
         var fHTMLbioPic = HTMLbioPic.replace(placeholderData, this.bioPic);
-        $('#header').append(fHTMLbioPic);   
+        $('#header').append(fHTMLbioPic);
 
         var fHTMLwelcomeMsg = HTMLwelcomeMsg.replace(placeholderData, this.welcomeMessage);
         $('#header').append(fHTMLwelcomeMsg);
 
         $('#header').append(HTMLskillsStart);
 
-        for(var index in bio.skills) {
+        for (var index in bio.skills) {
             var skillElement = HTMLskills.replace(placeholderData, bio.skills[index]);
             $('#skills').append(skillElement);
         }
 
     }
 };
+
+bio.display();
 
 var education = {
     schools: [
@@ -90,37 +92,70 @@ var work = {
         employer: 'Automatic Data Processing',
         title: 'Member Technical',
         location: 'Pune India',
-        dates: 'In progress',
-        description: 'I work in R & D department',
+        dates: '2017 - In progress',
+        description: 'I work in Rished fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when loo & D department',
     },
     {
         employer: 'Tech Mahindra',
         title: 'Software Engineer',
         location: 'Pune India',
         dates: '2014-2016',
-        description: 'Backend developer',
+        description: 'Backend like readable English. Many desktop publish be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layouing packages and web page editors now use Lorem Ipsum as their defdeveloper',
     }],
     display: function display() {
+        $('#workExperience').append(HTMLworkStart);
+
+        for (var index in work.jobs) {
+            var job = work.jobs[index];
+            $('.work-entry').append(HTMLworkEmployer.replace(placeholderData, job.employer));
+            $('.work-entry').append(HTMLworkTitle.replace(placeholderData, job.title));
+            $('.work-entry').append(HTMLworkDates.replace(placeholderData, job.dates));
+            $('.work-entry').append(HTMLworkLocation.replace(placeholderData, job.location));
+            $('.work-entry').append(HTMLworkDescription.replace(placeholderData, job.description));
+        }
 
     }
 };
 
-var projects = {
+work.display();
+
+var project = {
     projects: [{
         title: 'Order Management System',
         dates: '2014-2016',
-        description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+        description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
         images: ''
     },
     {
         title: 'Contrary to popular belief',
         dates: '2016-2017',
-        description: 'it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model',
+        description: 'it look like readable English. Many desktop publish be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layouing packages and web page editors now use Lorem Ipsum as their default model',
         images: ''
     }],
     display: function display() {
 
+        var HTMLprojectStart = '<div class="project-entry"></div>';
+        var HTMLprojectTitle = '<a href="#">%data%</a>';
+        var HTMLprojectDates = '<div class="date-text">%data%</div>';
+        var HTMLprojectDescription = '<p><br>%data%</p>';
+        var HTMLprojectImage = '<img src="%data%">';
+
+        $('#projects').append(HTMLprojectStart);
+
+        var projects = project.projects;
+
+        for (var index in projects) {
+
+            $('.project-entry').append(HTMLprojectTitle.replace(placeholderData, projects[index].title));
+            $('.project-entry').append(HTMLprojectDates.replace(placeholderData, projects[index].dates));
+            $('.project-entry').append(HTMLprojectDescription.replace(placeholderData, projects[index].description));
+            $('.project-entry').append(HTMLprojectImage.replace(placeholderData, projects[index].images));
+
+        }
+
+
+
     }
 };
 
-bio.display();
+project.display();
