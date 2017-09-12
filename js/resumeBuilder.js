@@ -83,24 +83,25 @@ var education = {
         }],
     display: function display() {
 
-        $('#education').append(HTMLschoolStart);
-
         for (var index in education.schools) {
-            $('.education-entry').append(HTMLschoolName.replace(placeholderData, education.schools[index].name));
-            $('.education-entry').append(HTMLschoolDates.replace(placeholderData, education.schools[index].dates));
-            $('.education-entry').append(HTMLschoolDegree.replace(placeholderData, education.schools[index].degree));
-            $('.education-entry').append(HTMLschoolMajor.replace(placeholderData, education.schools[index].majors.join(' ')));
-            $('.education-entry').append(HTMLschoolLocation.replace(placeholderData, education.schools[index].location));
+            $('#education').append(HTMLschoolStart);
+            $('.education-entry:last').append(HTMLschoolName.replace(placeholderData, education.schools[index].name));
+            $('.education-entry:last').append(HTMLschoolDates.replace(placeholderData, education.schools[index].dates));
+            $('.education-entry:last').append(HTMLschoolDegree.replace(placeholderData, education.schools[index].degree));
+            $('.education-entry:last').append(HTMLschoolMajor.replace(placeholderData, education.schools[index].majors.join(' ')));
+            $('.education-entry:last').append(HTMLschoolLocation.replace(placeholderData, education.schools[index].location));
 
         }
 
-         $('#education').append(HTMLonlineClasses);
-         $('#education').append(HTMLschoolStart);
-        for(var index in education.onlineCourses) {
-            $('.education-entry').append(HTMLonlineTitle.replace(placeholderData, education.onlineCourses[index].title));
-            $('.education-entry').append(HTMLonlineSchool.replace(placeholderData, education.onlineCourses[index].school));
-            $('.education-entry').append(HTMLonlineDates.replace(placeholderData, education.onlineCourses[index].dates));
-            $('.education-entry').append(HTMLonlineURL.replace(placeholderData, education.onlineCourses[index].url));
+        $('#education').append(HTMLonlineClasses);
+
+        for (var index in education.onlineCourses) {
+            $('#education').append(HTMLschoolStart);
+            $('.education-entry:last').append(HTMLonlineTitle.replace(placeholderData, education.onlineCourses[index].title));
+
+            $('.education-entry:last').append(HTMLonlineSchool.replace(placeholderData, education.onlineCourses[index].school));
+            $('.education-entry:last').append(HTMLonlineDates.replace(placeholderData, education.onlineCourses[index].dates));
+            $('.education-entry:last').append(HTMLonlineURL.replace(placeholderData, education.onlineCourses[index].url));
         }
 
     }
@@ -125,15 +126,15 @@ var work = {
         description: 'Backend like readable English. Many desktop publish be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layouing packages and web page editors now use Lorem Ipsum as their defdeveloper',
     }],
     display: function display() {
-        $('#workExperience').append(HTMLworkStart);
 
         for (var index in work.jobs) {
             var job = work.jobs[index];
-            $('.work-entry').append(HTMLworkEmployer.replace(placeholderData, job.employer));
-            $('.work-entry').append(HTMLworkTitle.replace(placeholderData, job.title));
-            $('.work-entry').append(HTMLworkDates.replace(placeholderData, job.dates));
-            $('.work-entry').append(HTMLworkLocation.replace(placeholderData, job.location));
-            $('.work-entry').append(HTMLworkDescription.replace(placeholderData, job.description));
+            $('#workExperience').append(HTMLworkStart);
+            $('.work-entry:last').append(HTMLworkEmployer.replace(placeholderData, job.employer));
+            $('.work-entry:last').append(HTMLworkTitle.replace(placeholderData, job.title));
+            $('.work-entry:last').append(HTMLworkDates.replace(placeholderData, job.dates));
+            $('.work-entry:last').append(HTMLworkLocation.replace(placeholderData, job.location));
+            $('.work-entry:last').append(HTMLworkDescription.replace(placeholderData, job.description));
         }
 
     }
@@ -156,22 +157,14 @@ var project = {
     }],
     display: function display() {
 
-        var HTMLprojectStart = '<div class="project-entry"></div>';
-        var HTMLprojectTitle = '<a href="#">%data%</a>';
-        var HTMLprojectDates = '<div class="date-text">%data%</div>';
-        var HTMLprojectDescription = '<p><br>%data%</p>';
-        var HTMLprojectImage = '<img src="%data%">';
-
-        $('#projects').append(HTMLprojectStart);
-
         var projects = project.projects;
 
         for (var index in projects) {
-
-            $('.project-entry').append(HTMLprojectTitle.replace(placeholderData, projects[index].title));
-            $('.project-entry').append(HTMLprojectDates.replace(placeholderData, projects[index].dates));
-            $('.project-entry').append(HTMLprojectDescription.replace(placeholderData, projects[index].description));
-            $('.project-entry').append(HTMLprojectImage.replace(placeholderData, projects[index].images));
+            $('#projects').append(HTMLprojectStart);
+            $('.project-entry:last').append(HTMLprojectTitle.replace(placeholderData, projects[index].title));
+            $('.project-entry:last').append(HTMLprojectDates.replace(placeholderData, projects[index].dates));
+            $('.project-entry:last').append(HTMLprojectDescription.replace(placeholderData, projects[index].description));
+            $('.project-entry:last').append(HTMLprojectImage.replace(placeholderData, projects[index].images));
 
         }
 
@@ -181,3 +174,5 @@ var project = {
 };
 
 project.display();
+
+$("#mapDiv").append(googleMap);
